@@ -103,7 +103,7 @@ if choice == '맞춤 코칭':
         else:
             st.warning("목표를 입력해주세요.")
 
-    feedback = st.text_area("추천 사항에 대한 피드백을 남겨주세요:")
+    feedback = st.text_area("핏멘토의 맞춤 운동 추천에 대해 피드백을 남겨주세요!")
     if st.button("피드백 제출"):
         st.success("피드백이 제출되었습니다. 감사합니다!")
 
