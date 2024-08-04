@@ -47,7 +47,7 @@ def load_model():
 model = load_model()
 
 # Streamlit 애플리케이션 제목
-st.title("핏멘토 🏋️‍♀️ : 맞춤형 피트니스 코칭")
+st.title("핏멘토 🏋️‍♀️ : 맞춤 피트니스 코칭")
 
 with st.sidebar:
     choice = option_menu("", ["맞춤 코칭", "오늘의 운동", "AI 멘토 상담"],
