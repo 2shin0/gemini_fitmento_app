@@ -90,12 +90,13 @@ if choice == '맞춤 코칭':
                 표 안에는 마크다운 문법이 포함되지 않도록 답변하세요.
                 """
                 response_placeholder = st.empty()
-                response = chat.send_message(prompt)
+                # response = chat.send_message(prompt)
+                model.generate_content(prompt, stream=True)
                 response_text = response.text
 
-                for i in range(len(response_text) + 1):
-                    response_placeholder.markdown(response_text[:i])
-                    time.sleep(0.02)
+                # for i in range(len(response_text) + 1):
+                #     response_placeholder.markdown(response_text[:i])
+                #     time.sleep(0.02)
 
                 st.write(response.text)
                 st.write("오늘도 화이팅! 운동 목표를 잊지 마세요!")
