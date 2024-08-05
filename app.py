@@ -137,10 +137,11 @@ elif choice == 'AI 멘토 상담':
         """
         with st.chat_message("ai"):
             with st.spinner("🏃‍♀️ AI 멘토가 답변 중입니다 🏃‍♂️"):
-                response_placeholder = st.empty()
-                response = st.session_state.chat_session.send_message(full_prompt)
+                # response_placeholder = st.empty()
+                # response = st.session_state.chat_session.send_message(full_prompt)
+                model.generate_content(prompt, stream=True)
                 response_text = response.text
-                for i in range(len(response_text) + 1):
-                    response_placeholder.markdown(response_text[:i])
-                    time.sleep(0.02)
+                # for i in range(len(response_text) + 1):
+                #     response_placeholder.markdown(response_text[:i])
+                #     time.sleep(0.02)
                 st.markdown(response.text)
