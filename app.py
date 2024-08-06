@@ -89,15 +89,15 @@ if choice == '맞춤 코칭':
                 답변에는 표를 포함하고, 각 운동의 종류와 세트 및 반복 수를 포함해 주세요.
                 표 안에는 마크다운 문법이 포함되지 않도록 답변하세요.
                 """
+                
                 response_placeholder = st.empty()
-                response = chat.send_message(prompt)
-                response_text = response.text
-
-                for i in range(len(response_text) + 1):
-                    response_placeholder.markdown(response_text[:i])
-                    time.sleep(0.02)
-
-                st.write(response.text)
+                response = st.session_state.chat_session.send_message(prompt, stream = True)
+                full_response = ""
+                for chunk in response:
+                    full_response += chunk
+                    response_placeholder.markdown(full_response)
+                st.markdown(full_response)
+                
                 st.write("오늘도 화이팅! 운동 목표를 잊지 마세요!")
 
         else:
@@ -138,7 +138,8 @@ elif choice == 'AI 멘토 상담':
             with st.spinner("🏃‍♀️ AI 멘토가 답변 중입니다 🏃‍♂️"):
                 response_placeholder = st.empty()
                 response = st.session_state.chat_session.send_message(full_prompt, stream = True)
-                response_text = response.text
-                for i in range(len(response_text) + 1):
-                    response_placeholder.markdown(response_text[:i])
-                st.markdown(response.text)
+                full_response = ""
+                for chunk in response:
+                    full_response += chunk
+                    response_placeholder.markdown(full_response)
+                st.markdown(full_response)
