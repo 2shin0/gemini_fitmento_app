@@ -142,4 +142,4 @@ elif choice == 'AI 멘토 상담':
                 for i in range(len(response_text) + 1):
                     response_placeholder.markdown(response_text[:i])
                     time.sleep(0.02)
-                st.markdown(response_text)
+                st.markdown(response.text)
