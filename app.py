@@ -47,7 +47,7 @@ def load_model():
 model = load_model()
 
 # Streamlit 애플리케이션 제목
-st.title("핏멘토 🏋️‍♀️ : 맞춤 피트니스 코칭")
+st.title("핏멘토 🏋️‍♀️ : 맞춤형 피트니스 코칭")
 
 with st.sidebar:
     choice = option_menu("", ["맞춤 코칭", "오늘의 운동", "AI 멘토 상담"],
@@ -84,26 +84,25 @@ if choice == '맞춤 코칭':
                 운동 기간 : {fit_day}
                 하루 평균 운동 시간 : {fit_time}
                 운동 경험 수준: {experience_level}
-
                 운동 계획을 800자 이내로 추천해 주세요. 
                 답변에는 표를 포함하고, 각 운동의 종류와 세트 및 반복 수를 포함해 주세요.
                 표 안에는 마크다운 문법이 포함되지 않도록 답변하세요.
                 """
-                
                 response_placeholder = st.empty()
                 response = chat.send_message(prompt)
                 response_text = response.text
+
                 for i in range(len(response_text) + 1):
                     response_placeholder.markdown(response_text[:i])
                     time.sleep(0.02)
-                st.markdown(response_text)
-                
+
+                st.write(response.text)
                 st.write("오늘도 화이팅! 운동 목표를 잊지 마세요!")
 
         else:
             st.warning("목표를 입력해주세요.")
 
-    feedback = st.text_area("핏멘토의 맞춤 운동 추천에 대해 피드백을 남겨주세요!")
+    feedback = st.text_area("추천 사항에 대한 피드백을 남겨주세요:")
     if st.button("피드백 제출"):
         st.success("피드백이 제출되었습니다. 감사합니다!")
 
